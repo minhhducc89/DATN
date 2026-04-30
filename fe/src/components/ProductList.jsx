@@ -45,7 +45,7 @@ function ProductList() {
         ))}
       </div>
       
-      {/* Nếu DB trống */}
+      
       {products.length === 0 && <p>Chưa có sản phẩm nào trong Database.</p>}
     </div>
   );
