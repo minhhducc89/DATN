@@ -19,7 +19,6 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use('/api/upload', require('./src/routes/uploadRoute'));
 app.use('/api/auth', require('./src/routes/authRoute'));
 app.use('/api/products', require('./src/routes/productRoute'));
 
