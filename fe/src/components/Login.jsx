@@ -22,7 +22,8 @@ function Login() {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       setMessage(data.message || 'Đăng nhập thành công!');
-      navigate('/products');
+      const nextPage = data.user?.role === 'admin' ? '/admin' : '/';
+      navigate(nextPage);
     } catch (error) {
       setMessage(error.response?.data?.message || 'Có lỗi xảy ra khi đăng nhập!');
     } finally {
