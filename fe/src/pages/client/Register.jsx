@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axiosClient from '../api/axiosClient';
+import axiosClient from '../../api/axiosClient';
 
 function Register() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });

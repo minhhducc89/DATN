@@ -1,44 +1,63 @@
-import React from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { getCurrentUser, logout } from '../utils/auth';
-
+import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Button, Layout, Menu, theme } from 'antd';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import SidebarMenu from '../components/admin/SidebarMenu';
+const { Header, Sider, Content } = Layout;
 const AdminLayout = () => {
-  const user = getCurrentUser();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
   return (
-    <div style={{ display: 'flex' }}>
-     
-      <div style={{ flex: 1 }}>
-        <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px', backgroundColor: '#24292f', color: '#fff' }}>
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <Link to="/admin" style={{ textDecoration: 'none', color: '#fff', fontWeight: '700' }}>
-              Admin Dashboard
-            </Link>
-            <Link to="/" style={{ textDecoration: 'none', color: '#cbd9e6' }}>
-              Về trang client
-            </Link>
-          </div>
+     <Layout style={{minHeight:'100vh'}}>
+      <Sider 
+        trigger={null} 
+        collapsible 
+        collapsed={collapsed}
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          setCollapsed(broken);
+        }}
+        width={250}
+      >
+        <div className="text-white text-3xl p-5 text-center font-bold">ADMIN</div>
+        <SidebarMenu/>
+      </Sider>
+      <Layout>
+        <Header style={{ padding: 0, background: colorBgContainer }}>
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: '16px',
+              width: 64,
+              height: 64,
+            }}
+          />
+        </Header>
+        <Content
+          style={{
+            margin: '24px 16px',
+            padding: 24,
+            minHeight: 280,
+            background: colorBgContainer,
+            borderRadius: borderRadiusLG,
+          }}
+        >
+          <Outlet/>
+        </Content>
+      </Layout>
+    </Layout>
+  )
+}
 
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            {user && <span>Admin: {user.name}</span>}
-            <button type="button" onClick={handleLogout} style={{ padding: '8px 14px', borderRadius: '8px', border: 'none', backgroundColor: '#d32f2f', color: '#fff', cursor: 'pointer' }}>
-              Đăng xuất
-            </button>
-          </div>
-        </header>
-
-        <main style={{ padding: '24px' }}>
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
-};
-
-export default AdminLayout;
+export default AdminLayout
