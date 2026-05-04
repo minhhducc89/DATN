@@ -116,7 +116,7 @@ const Footer = () => {
 
         {/* Divider & Bottom Info */}
         <div className="border-t border-white/20 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-300 gap-4 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-300 gap-4 mb-0">
             <p>© 2026. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/chinh-sach" className="hover:text-yellow-400 transition-colors">Chính sách bảo mật</Link>
@@ -126,8 +126,8 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col items-center text-center text-[11px] text-gray-300/80 gap-1.5 leading-relaxed">
-            {/* BCT Logo Placeholder */}
-            <img src="/bct-logo.png" alt="Bộ Công Thương" className="h-10 mb-2 opacity-90" />
+            
+            <img src="/images/bocongthuong.png" alt="Bộ Công Thương" className="h-40 mb-1 opacity-90" />
             <p className="uppercase font-bold text-white">CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM - RẠP CHIẾU PHIM</p>
             <p>ĐỊA CHỈ: 135 HAI BÀ TRƯNG, PHƯỜNG BẾN NGHÉ, QUẬN 1, TP.HCM</p>
             <p>GIẤY CNĐKDN SỐ: 0312742744, ĐĂNG KÝ LẦN ĐẦU NGÀY 18/04/2014, ĐĂNG KÝ THAY ĐỔI LẦN THỨ 2 NGÀY 15/09/2014, CẤP BỞI SỞ KH&ĐT TP.HCM</p>
